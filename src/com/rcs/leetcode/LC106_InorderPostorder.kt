@@ -63,8 +63,7 @@ class LC106_InorderPostorder {
 
             // left
             postorder
-                .reversed()
-                .firstOrNull { inorder.indexOf(it) < inorderIndexOfRoot }
+                .lastOrNull { inorder.indexOf(it) < inorderIndexOfRoot }
                 ?.let {
                     postorder.remove(it)
                     val leftIndex = leftOf(rootIndex)
