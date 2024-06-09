@@ -65,6 +65,7 @@ class LC105_PreorderInorder {
 
             val inorderIndexOfRoot = inorder.indexOf(root)
 
+            // left
             preorder
                 .firstOrNull { inorder.indexOf(it) < inorderIndexOfRoot }
                 ?.let {
@@ -82,7 +83,7 @@ class LC105_PreorderInorder {
                         )
                 }
 
-
+            // right
             preorder
                 .firstOrNull { inorder.indexOf(it) > inorderIndexOfRoot }
                 ?.let {
