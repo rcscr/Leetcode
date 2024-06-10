@@ -22,13 +22,12 @@ class LC084_HistogramRectangle {
          */
 
         fun largestRectangleArea(heights: IntArray): Int {
-            var maxArea = 0
-            for (i in heights.indices) {
-                val maxAreaHeightConstant = maxAreaHeightConstant(i, heights)
-                val maxAreaHeightVariable = maxAreaHeightVariable(i, heights)
-                maxArea = max(maxArea, max(maxAreaHeightConstant, maxAreaHeightVariable))
-            }
-            return maxArea
+            return heights
+                .foldIndexed(0) { i, maxArea, _ ->
+                    val maxAreaHeightConstant = maxAreaHeightConstant(i, heights)
+                    val maxAreaHeightVariable = maxAreaHeightVariable(i, heights)
+                    max(maxArea, max(maxAreaHeightConstant, maxAreaHeightVariable))
+                }
         }
 
         private fun maxAreaHeightVariable(i: Int, heights: IntArray): Int {
