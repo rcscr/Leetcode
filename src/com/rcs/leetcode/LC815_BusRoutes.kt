@@ -27,10 +27,9 @@ class LC815_BusRoutes {
                 val route = routes[routeIndex]
 
                 // add stops (nodes)
-                for (stopIndex in route.indices) {
-                    val thisStop = route[stopIndex]
-                    if (!graph.contains(thisStop)) {
-                        graph.addNode(thisStop, mutableSetOf())
+                for (stop in route) {
+                    if (!graph.contains(stop)) {
+                        graph.addNode(stop, mutableSetOf())
                     }
                 }
 
@@ -41,11 +40,10 @@ class LC815_BusRoutes {
                 }
 
                 // add routes that service each stop
-                for (stopIndex in route.indices) {
-                    val thisStop = route[stopIndex]
-                    val routesAtThisStop = graph.getValue(thisStop)!!
+                for (stop in route) {
+                    val routesAtThisStop = graph.getValue(stop)!!
                     routesAtThisStop.add(routeIndex)
-                    graph.setValue(thisStop, routesAtThisStop)
+                    graph.setValue(stop, routesAtThisStop)
                 }
             }
 
