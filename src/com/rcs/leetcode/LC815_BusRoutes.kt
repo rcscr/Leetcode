@@ -35,10 +35,9 @@ class LC815_BusRoutes {
                 }
 
                 // add edges
-                for (stopIndex in route.indices) {
-                    val thisStop = route[stopIndex]
-                    val nextStop = route[(stopIndex + 1) % route.size]
-                    graph.addEdge(thisStop, nextStop)
+                route.fold(route[route.size-1]) { a, b ->
+                    graph.addEdge(a, b)
+                    b
                 }
 
                 // add routes that service each stop
