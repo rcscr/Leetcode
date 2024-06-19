@@ -28,29 +28,6 @@ class LC112_PathSum {
          */
 
         fun hasPathSum(tree: Array<Int?>, targetSum: Int): Boolean {
-
-            // this works, but it's better solved with a BinaryTree;
-            // will refactor later when I've written the tree
-
-            val graph = UnidirectionalPropertyGraph<Int, Int>()
-
-            tree.forEachIndexed { index, weight ->
-                if (weight != null) {
-                    graph.addNode(index, weight)
-                }
-            }
-
-            tree.indices.forEach { index ->
-                if (graph.contains(index)) {
-                    if (graph.contains(leftOf(index))) {
-                        graph.addEdge(index, leftOf(index))
-                    }
-                    if (graph.contains(rightOf(index))) {
-                        graph.addEdge(index, rightOf(index))
-                    }
-                }
-            }
-
             val leafNodes = tree.indices
                 .filter { index ->
                     val leftChildIndex = leftOf(index)
@@ -61,12 +38,13 @@ class LC112_PathSum {
                 }
 
             return leafNodes.any {
-                graph.getShortestPathWithWeight(
-                    0,
-                    it,
-                    { w, _, k -> w + graph.getValue(k)!! },
-                    graph.getValue(0)!!
-                )?.weight == targetSum
+                var index = it
+                var sum = 0
+                do {
+                    sum += tree[index]!!
+                    index = parentOf(index)
+                } while (index >= 0)
+                sum == targetSum
             }
         }
     }

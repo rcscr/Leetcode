@@ -229,6 +229,10 @@ fun rightOf(index: Int): Int {
     return 2 * index + 2
 }
 
+fun parentOf(index: Int): Int {
+    return if (index == 0) -1 else (index - 1) / 2
+}
+
 fun maxNodes(height: Int): Int {
     // Using the formula 2^(N+1) - 1
     return (1 shl (height + 1)) - 1
