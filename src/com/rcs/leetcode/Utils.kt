@@ -19,6 +19,22 @@ class UnidirectionalPropertyGraph<K, V> {
         return nodes[key]?.connections?.toSet()
     }
 
+    fun getTransientConnections(key: K): Set<K> {
+        return getTransientConnections(key, mutableSetOf())
+    }
+
+    private fun getTransientConnections(key: K, visited: MutableSet<K>): Set<K> {
+        if (visited.contains(key)) {
+            return mutableSetOf()
+        }
+        visited.add(key)
+        val directConnections = getConnections(key) ?: mutableSetOf()
+        return directConnections + directConnections
+            .flatMap { getTransientConnections(it, visited) }
+            .filter { it != key }
+            .toSet()
+    }
+
     fun getValue(key: K): V? {
         return nodes[key]?.value
     }
