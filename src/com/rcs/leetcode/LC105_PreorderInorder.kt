@@ -103,23 +103,5 @@ class LC105_PreorderInorder {
 
             return root
         }
-
-        private fun leftOf(index: Int): Int {
-            return 2 * index + 1
-        }
-
-        private fun rightOf(index: Int): Int {
-            return 2 * index + 2
-        }
-
-        private fun maxNodes(height: Int): Int {
-            // Using the formula 2^(N+1) - 1
-            return (1 shl (height + 1)) - 1
-        }
-
-        private fun trim(result: Array<Int?>): Array<Int?> {
-            val indexOfLastNonNull = result.indices.reversed().first { result[it] != null }
-            return result.copyOfRange(0, indexOfLastNonNull + 1)
-        }
     }
 }
