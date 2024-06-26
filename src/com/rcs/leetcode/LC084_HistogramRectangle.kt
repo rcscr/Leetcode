@@ -7,7 +7,7 @@ fun main() {
     println(LC084_HistogramRectangle.largestRectangleArea(intArrayOf(2, 1, 5, 6, 2, 3)))
 
     // A rectangle whose height is less than the start: [5, 6, 4] = [4, 4, 4] = 12
-    println(LC084_HistogramRectangle.largestRectangleArea(intArrayOf(2, 1, 5, 6, 4, 3)))
+    println(LC084_HistogramRectangle.largestRectangleArea(intArrayOf(2, 1, 5, 6, 4, 1)))
 }
 
 class LC084_HistogramRectangle {
@@ -31,9 +31,13 @@ class LC084_HistogramRectangle {
         }
 
         private fun maxAreaHeightVariable(i: Int, heights: IntArray): Int {
-            val minHeight = (i..<heights.size).minOf { heights[it] }
-            val heightsRemaining = heights.size - i
-            return minHeight * heightsRemaining
+            return (i+1..<heights.size)
+                .fold(heights[i]) { maxArea, index ->
+                    val minHeight = (i..index).minOf { heights[it] }
+                    val heightsRemaining = index - i + 1
+                    val candidateMaxArea = minHeight * heightsRemaining
+                    max(maxArea, candidateMaxArea)
+                }
         }
 
         private fun maxAreaHeightConstant(i: Int, heights: IntArray): Int {
