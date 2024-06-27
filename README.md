@@ -15,3 +15,5 @@
 [200](https://leetcode.com/problems/number-of-islands/description/)
 
 [815](https://leetcode.com/problems/bus-routes/description/)
+
+[2221](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
