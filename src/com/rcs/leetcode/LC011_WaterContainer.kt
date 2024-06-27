@@ -1,6 +1,5 @@
 package com.rcs.leetcode
 
-import kotlin.math.max
 import kotlin.math.min
 
 fun main() {
@@ -18,18 +17,29 @@ class LC011_WaterContainer {
          * Output: 49
          */
 
-        fun maxArea(heights: IntArray): Int {
+        // indices are inclusive
+        data class WaterContainer(val indices: Pair<Int, Int>, val area: Int)
+
+        fun maxArea(heights: IntArray): WaterContainer {
             return heights
-                .foldIndexed(0) { i, maxArea, _ ->
-                    max(maxArea, maxAreaFrom(i, heights))
+                .foldIndexed(WaterContainer(Pair(0, 0), 0)) { i, maxWaterContainer, _ ->
+                    maxAreaFrom(i, heights).let {
+                        when(it.area > maxWaterContainer.area) {
+                            true -> it
+                            else -> maxWaterContainer
+                        }
+                    }
                 }
         }
 
-        private fun maxAreaFrom(i: Int, heights: IntArray): Int {
+        private fun maxAreaFrom(i: Int, heights: IntArray): WaterContainer {
             return ((i + 1)..<heights.size)
-                .fold(0) { maxArea, j ->
-                    val candidateMaxArea = min(heights[i], heights[j]) * (j - i)
-                    max(maxArea, candidateMaxArea)
+                .fold(WaterContainer(Pair(0, 0), 0)) { maxWaterContainer, j ->
+                    val candidateMaxContainer = min(heights[i], heights[j]) * (j - i)
+                    when (candidateMaxContainer > maxWaterContainer.area) {
+                        true -> WaterContainer(Pair(i, j), candidateMaxContainer)
+                        else -> maxWaterContainer
+                    }
                 }
         }
     }
