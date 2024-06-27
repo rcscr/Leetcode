@@ -1,6 +1,6 @@
 package com.rcs.leetcode
 
-import kotlin.math.max
+import kotlin.math.min
 
 fun main() {
     // A rectangle whose height is the start: [5, 6] = [5, 5] = 10
@@ -21,35 +21,32 @@ class LC084_HistogramRectangle {
          * Output: 10
          */
 
-        fun largestRectangleArea(heights: IntArray): Int {
+        // indices are inclusive
+        data class LargestRectangle(val indices: Pair<Int, Int>, val area: Int)
+
+        fun largestRectangleArea(heights: IntArray): LargestRectangle {
             return heights
-                .foldIndexed(0) { i, maxArea, _ ->
-                    val maxAreaHeightConstant = maxAreaHeightConstant(i, heights)
-                    val maxAreaHeightVariable = maxAreaHeightVariable(i, heights)
-                    max(maxArea, max(maxAreaHeightConstant, maxAreaHeightVariable))
+                .foldIndexed(LargestRectangle(Pair(0, 0), 0)) { i, largestRect, _ ->
+                    largestRectangleStartingAt(i, heights).let {
+                        when (it.area > largestRect.area) {
+                            true -> it
+                            else -> largestRect
+                        }
+                    }
                 }
         }
 
-        private fun maxAreaHeightVariable(i: Int, heights: IntArray): Int {
-            return (i+1..<heights.size)
-                .fold(heights[i]) { maxArea, index ->
-                    val minHeight = (i..index).minOf { heights[it] }
+        private fun largestRectangleStartingAt(i: Int, heights: IntArray): LargestRectangle {
+            return (i + 1..<heights.size)
+                .fold(LargestRectangle(Pair(i, i), heights[i])) { maxArea, index ->
+                    val minHeight = min(heights[i], (i..index).minOf { heights[it] })
                     val heightsRemaining = index - i + 1
                     val candidateMaxArea = minHeight * heightsRemaining
-                    max(maxArea, candidateMaxArea)
+                    when (candidateMaxArea > maxArea.area) {
+                        true -> LargestRectangle(Pair(i, index), candidateMaxArea)
+                        else -> maxArea
+                    }
                 }
-        }
-
-        private fun maxAreaHeightConstant(i: Int, heights: IntArray): Int {
-            var maxArea = heights[i]
-            for (j in (i+1)..<heights.size) {
-                if (heights[j] < heights[i]) {
-                    break
-                } else {
-                    maxArea += heights[i]
-                }
-            }
-            return maxArea
         }
     }
 }
