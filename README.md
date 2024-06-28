@@ -10,6 +10,8 @@
 
 [112](https://leetcode.com/problems/path-sum/description/)
 
+[118](https://leetcode.com/problems/pascals-triangle/description/)
+
 [124](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
 
 [200](https://leetcode.com/problems/number-of-islands/description/)
