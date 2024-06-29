@@ -20,9 +20,11 @@ class LC0118_PascalsTriangle {
             return (1..<numRows)
                 .fold(mutableListOf(intArrayOf(1))) { triangle, _ ->
                     val previousRow = triangle.last()
-                    val nextRow = IntArray(previousRow.size + 1) { 1 }
-                    for (i in 0..<previousRow.size-1) {
-                        nextRow[i + 1] = previousRow[i] + previousRow[i + 1]
+                    val nextRow = IntArray(previousRow.size + 1) {
+                        i -> when {
+                            i == 0 || i == previousRow.size -> 1
+                            else -> previousRow[i - 1] + previousRow[i]
+                        }
                     }
                     triangle.add(nextRow)
                     triangle
