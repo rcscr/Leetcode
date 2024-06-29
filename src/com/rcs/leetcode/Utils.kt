@@ -23,18 +23,6 @@ class UnidirectionalPropertyGraph<K, V> {
         return getTransientConnections(key, mutableSetOf())
     }
 
-    private fun getTransientConnections(key: K, visited: MutableSet<K>): Set<K> {
-        if (visited.contains(key)) {
-            return mutableSetOf()
-        }
-        visited.add(key)
-        val directConnections = getConnections(key) ?: mutableSetOf()
-        return directConnections + directConnections
-            .flatMap { getTransientConnections(it, visited) }
-            .filter { it != key }
-            .toSet()
-    }
-
     fun getValue(key: K): V? {
         return nodes[key]?.value
     }
@@ -112,9 +100,7 @@ class UnidirectionalPropertyGraph<K, V> {
         pathQueue.add(WeightedPath(linkedSetOf(start), initialWeight))
 
         while (pathQueue.isNotEmpty()) {
-            val candidatePathAndWeight = pathQueue.removeFirst()
-            val candidatePath = candidatePathAndWeight.path
-            val candidateWeight = candidatePathAndWeight.weight
+            val (candidatePath, candidateWeight) = pathQueue.removeFirst()
             val candidateNode = nodes[candidatePath.last()]!!
 
             if (candidateNode.connections.contains(end)) {
@@ -122,7 +108,7 @@ class UnidirectionalPropertyGraph<K, V> {
             }
 
             candidateNode.connections
-                .filter { !candidatePathAndWeight.path.contains(it) }
+                .filter { !candidatePath.contains(it) }
                 .map { WeightedPath(candidatePath.concat(it), weightAccumulator(candidateWeight, candidateNode.key, it)) }
                 .forEach { pathQueue.add(it) }
         }
@@ -165,12 +151,13 @@ class UnidirectionalPropertyGraph<K, V> {
         val pathQueue = PriorityQueue<WeightedPathPriorityQueueEntry<K, W>>()
         pathQueue.add(WeightedPathPriorityQueueEntry(linkedSetOf(start), initialWeight, weightComparator))
 
+        val distances = mutableMapOf<K, W>()
+        distances[start] = initialWeight
+
         var minWeightedPath: WeightedPath<K, W>? = null
 
         while (pathQueue.isNotEmpty()) {
-            val candidatePathAndWeight = pathQueue.remove()
-            val candidatePath = candidatePathAndWeight.path
-            val candidateWeight = candidatePathAndWeight.weight
+            val (candidatePath, candidateWeight) = pathQueue.remove()
             val candidateNode = nodes[candidatePath.last()]!!
 
             if (candidateNode.connections.contains(end)) {
@@ -183,14 +170,35 @@ class UnidirectionalPropertyGraph<K, V> {
             candidateNode.connections
                 .filter { next -> !candidatePath.contains(next) }
                 .forEach { next ->
-                    weightAccumulator(candidateWeight, candidatePath.last(), next)
-                        .map { w -> WeightedPathPriorityQueueEntry(candidatePath.concat(next), w, weightComparator) }
-                        .filter { pw -> minWeightedPath == null || weightComparator.compare(pw.weight, minWeightedPath.weight) < 0 }
-                        .forEach { pw -> pathQueue.add(pw) }
+                    val weights = weightAccumulator(candidateWeight, candidatePath.last(), next)
+                    weights.forEach { weight ->
+                        //  Only paths that offer a shorter distance to a node than any previously
+                        //  known paths are added to the queue for further exploration
+                        val shouldExplorePath = distances[next] == null
+                                || weightComparator.compare(weight, distances[next]!!) < 0
+
+                        if (shouldExplorePath) {
+                            distances[next] = weight
+                            val entry = WeightedPathPriorityQueueEntry(candidatePath.concat(next), weight, weightComparator)
+                            pathQueue.add(entry)
+                        }
+                    }
                 }
         }
 
         return minWeightedPath
+    }
+
+    private fun getTransientConnections(key: K, visited: MutableSet<K>): Set<K> {
+        if (visited.contains(key)) {
+            return mutableSetOf()
+        }
+        visited.add(key)
+        val directConnections = getConnections(key) ?: mutableSetOf()
+        return directConnections + directConnections
+            .flatMap { getTransientConnections(it, visited) }
+            .filter { it != key }
+            .toSet()
     }
 
     private fun getAllPaths(start: K, end: K, visited: SequencedSet<K>): List<SequencedSet<K>> {
