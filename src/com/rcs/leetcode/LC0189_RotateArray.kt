@@ -25,7 +25,7 @@ class LC0189_RotateArray {
         // rotates in place using O(1) memory
         fun rotate(nums: IntArray, k: Int): IntArray {
             val direction = when {
-                k > 0 -> 1
+                k > 0 ->  1
                 k < 0 -> -1
                 else -> throw IllegalArgumentException("Parameter `k` cannot be 0.")
             }
@@ -39,7 +39,7 @@ class LC0189_RotateArray {
             var current = nums[0]
             for (j in nums.indices) {
                 val index = when (direction) {
-                    1 -> (j+1) % nums.size
+                     1 -> (j + 1) % nums.size
                     -1 -> nums.size - 1 - j
                     else -> throw AssertionError()
                 }
