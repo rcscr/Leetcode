@@ -1,5 +1,7 @@
 ### Solved
 
+[3](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+
 [11](https://leetcode.com/problems/container-with-most-water/description/)
 
 [84](https://leetcode.com/problems/largest-rectangle-in-histogram/description/)
