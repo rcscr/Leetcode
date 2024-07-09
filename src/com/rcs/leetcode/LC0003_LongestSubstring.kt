@@ -1,7 +1,5 @@
 package com.rcs.leetcode
 
-import kotlin.math.max
-
 fun main() {
     println(LC0003_LongestSubstring.lengthOfLongestSubstring("abcabcbb"))
     println(LC0003_LongestSubstring.lengthOfLongestSubstring("bbbbb"))
@@ -32,15 +30,20 @@ class LC0003_LongestSubstring {
          * Explanation: The answer is "wke", with the length of 3.
          */
 
-        fun lengthOfLongestSubstring(string: String): Int {
+        data class LongestSubstring(val indices: Pair<Int, Int>, val substring: String)
+
+        fun lengthOfLongestSubstring(string: String): LongestSubstring {
             return string.indices
-                .fold(0) { longest, i ->
+                .fold(LongestSubstring(Pair(0, 0), "")) { longest, i ->
                     var j = i + 1
                     while (j + 1 < string.length && !contains(string, i, j, string[j])) {
                         j++
                     }
                     val candidateLongest = j - i
-                    max(longest, candidateLongest)
+                    when (candidateLongest > longest.indices.second - longest.indices.first) {
+                        true -> LongestSubstring(Pair(i, j), string.substring(i, j))
+                        else -> longest
+                    }
                 }
         }
 
