@@ -22,6 +22,8 @@
 
 [215](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 
+[242](https://leetcode.com/problems/valid-anagram/)
+
 [815](https://leetcode.com/problems/bus-routes/description/)
 
 [2221](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
