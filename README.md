@@ -27,3 +27,5 @@
 [815](https://leetcode.com/problems/bus-routes/description/)
 
 [2221](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
+
+[2544](https://leetcode.com/problems/alternating-digit-sum/)
