@@ -6,6 +6,8 @@
 
 [21](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 
+[23](https://leetcode.com/problems/merge-k-sorted-lists/)
+
 [84](https://leetcode.com/problems/largest-rectangle-in-histogram/description/)
 
 [105](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/)
