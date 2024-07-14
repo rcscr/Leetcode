@@ -28,6 +28,8 @@
 
 [242](https://leetcode.com/problems/valid-anagram/)
 
+[283](https://leetcode.com/problems/move-zeroes/)
+
 [815](https://leetcode.com/problems/bus-routes/description/)
 
 [2221](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
