@@ -26,6 +26,8 @@
 
 [200](https://leetcode.com/problems/number-of-islands/description/)
 
+[205](https://leetcode.com/problems/isomorphic-strings/)
+
 [215](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 
 [232](https://leetcode.com/problems/implement-queue-using-stacks/)
