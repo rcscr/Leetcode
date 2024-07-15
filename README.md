@@ -4,6 +4,8 @@
 
 [11](https://leetcode.com/problems/container-with-most-water/description/)
 
+[20](https://leetcode.com/problems/valid-parentheses/description/)
+
 [21](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 
 [23](https://leetcode.com/problems/merge-k-sorted-lists/)
