@@ -1,4 +1,4 @@
-### Solved (25)
+### Solved (26)
 
 [3](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
@@ -9,6 +9,8 @@
 [21](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 
 [23](https://leetcode.com/problems/merge-k-sorted-lists/)
+
+[42](https://leetcode.com/problems/trapping-rain-water/)
 
 [84](https://leetcode.com/problems/largest-rectangle-in-histogram/description/)
 
