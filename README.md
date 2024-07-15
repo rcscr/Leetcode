@@ -48,6 +48,8 @@
 
 [1909](https://leetcode.com/problems/remove-one-element-to-make-the-array-strictly-increasing/)
 
+[1991](https://leetcode.com/problems/find-the-middle-index-in-array/)
+
 [2221](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
 
 [2544](https://leetcode.com/problems/alternating-digit-sum/)
