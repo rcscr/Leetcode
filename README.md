@@ -1,4 +1,4 @@
-### Solved
+### Solved (24)
 
 [3](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
