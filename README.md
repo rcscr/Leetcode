@@ -1,4 +1,4 @@
-### Solved (24)
+### Solved (25)
 
 [3](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
@@ -43,6 +43,8 @@
 [572](https://leetcode.com/problems/subtree-of-another-tree/)
 
 [815](https://leetcode.com/problems/bus-routes/description/)
+
+[1909](https://leetcode.com/problems/remove-one-element-to-make-the-array-strictly-increasing/)
 
 [2221](https://leetcode.com/problems/find-triangular-sum-of-an-array/description/)
 
