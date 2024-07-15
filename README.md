@@ -34,6 +34,8 @@
 
 [283](https://leetcode.com/problems/move-zeroes/)
 
+[459](https://leetcode.com/problems/repeated-substring-pattern/description/)
+
 [572](https://leetcode.com/problems/subtree-of-another-tree/)
 
 [815](https://leetcode.com/problems/bus-routes/description/)
