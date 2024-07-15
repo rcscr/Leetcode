@@ -1,4 +1,6 @@
-### Solved (26)
+### Solved (28)
+
+[1](https://leetcode.com/problems/two-sum/)
 
 [3](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
