@@ -286,6 +286,10 @@ class BalancedBinarySearchTree<K, V> where K: Comparable<K> {
         return findRecursively(key, root)?.value
     }
 
+    fun inOrderIterator(): Iterator<BstEntry<K, V>> {
+        return InOrderTreeIterator(this)
+    }
+
     fun reOrderIterator(): Iterator<BstEntry<K, V>> {
         return ReOrderBstIterator(root)
     }
@@ -562,7 +566,35 @@ class BalancedBinarySearchTree<K, V> where K: Comparable<K> {
             }
         }
     }
-}
+
+    class InOrderTreeIterator<K: Comparable<K>, V>(
+        bst: BalancedBinarySearchTree<K, V>
+    ): Iterator<BstEntry<K, V>> {
+
+        private var next = leftMost(bst.root)
+
+        override fun hasNext(): Boolean {
+            return next != null
+        }
+
+        override fun next(): BstEntry<K, V> {
+            val toReturn = next!!
+            setNext()
+            return BstEntry(toReturn.key, toReturn.value)
+        }
+
+        private fun setNext() {
+            if (next?.right != null) {
+                next = leftMost(next?.right)
+            } else {
+                while (next?.parent != null && next == next?.parent?.right) {
+                    next = next?.parent
+                }
+                next = next?.parent
+            }
+        }
+    }
+    }
 
 data class BstNode<K, V>(
     var key: K,

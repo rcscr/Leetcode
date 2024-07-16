@@ -40,6 +40,8 @@
 
 [215](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 
+[230](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
+
 [232](https://leetcode.com/problems/implement-queue-using-stacks/)
 
 [242](https://leetcode.com/problems/valid-anagram/)
