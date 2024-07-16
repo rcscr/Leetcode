@@ -1,4 +1,4 @@
-### Solved (29)
+### Solved (30)
 
 [1](https://leetcode.com/problems/two-sum/)
 
@@ -13,6 +13,8 @@
 [23](https://leetcode.com/problems/merge-k-sorted-lists/)
 
 [42](https://leetcode.com/problems/trapping-rain-water/)
+
+[56](https://leetcode.com/problems/merge-intervals/description/)
 
 [84](https://leetcode.com/problems/largest-rectangle-in-histogram/description/)
 
