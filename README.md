@@ -1,4 +1,4 @@
-### Solved (30)
+### Solved (31)
 
 [1](https://leetcode.com/problems/two-sum/)
 
@@ -29,6 +29,8 @@
 [121](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
 
 [124](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
+
+[169](https://leetcode.com/problems/majority-element/description/)
 
 [146](https://leetcode.com/problems/lru-cache/)
 
