@@ -1,4 +1,4 @@
-### Solved (34)
+### Solved (35)
 
 [1](https://leetcode.com/problems/two-sum/)
 
@@ -13,6 +13,8 @@
 [23](https://leetcode.com/problems/merge-k-sorted-lists/)
 
 [42](https://leetcode.com/problems/trapping-rain-water/)
+
+[48](https://leetcode.com/problems/rotate-image/description/)
 
 [49](https://leetcode.com/problems/group-anagrams/)
 
