@@ -42,6 +42,8 @@
 
 [215](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 
+[229](https://leetcode.com/problems/majority-element-ii/)
+
 [230](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
 
 [232](https://leetcode.com/problems/implement-queue-using-stacks/)
