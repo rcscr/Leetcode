@@ -1,7 +1,7 @@
 package com.rcs.leetcode
 
 fun main() {
-    println(LC_0048_RotateImage.rotate90Clockwise(
+    println(LC0048_RotateImage.rotate90Clockwise(
         arrayOf(
             intArrayOf(1,2,3),
             intArrayOf(4,5,6),
@@ -9,7 +9,7 @@ fun main() {
         ))
         .contentDeepToString())
 
-    println(LC_0048_RotateImage.rotate90Clockwise(
+    println(LC0048_RotateImage.rotate90Clockwise(
         arrayOf(
             intArrayOf(5,1,9,11),
             intArrayOf(2,4,8,10),
@@ -19,7 +19,7 @@ fun main() {
         .contentDeepToString())
 }
 
-class LC_0048_RotateImage {
+class LC0048_RotateImage {
 
     companion object {
 
