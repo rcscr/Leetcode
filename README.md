@@ -1,4 +1,4 @@
-### Solved (35)
+### Solved (36)
 
 [1](https://leetcode.com/problems/two-sum/)
 
@@ -11,6 +11,8 @@
 [21](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 
 [23](https://leetcode.com/problems/merge-k-sorted-lists/)
+
+[36](https://leetcode.com/problems/valid-sudoku/)
 
 [42](https://leetcode.com/problems/trapping-rain-water/)
 
