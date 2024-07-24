@@ -1,4 +1,4 @@
-### Solved (36)
+### Solved (37)
 
 [1](https://leetcode.com/problems/two-sum/)
 
@@ -39,6 +39,8 @@
 [169](https://leetcode.com/problems/majority-element/description/)
 
 [146](https://leetcode.com/problems/lru-cache/)
+
+[149](https://leetcode.com/problems/largest-number/)
 
 [189](https://leetcode.com/problems/rotate-array/description/)
 
