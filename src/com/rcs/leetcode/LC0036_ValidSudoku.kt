@@ -39,31 +39,42 @@ class LC0036_ValidSudoku {
          */
 
         fun isValidSudoku(board: Array<CharArray>): Boolean {
+            val bitset = BooleanArray(10) { false }
+
             // for each row
             for (row in board) {
                 for (char in row) {
-                    if (!isValidSudokuCell(char)
-                        || (!char.isEmptyCell() && row.count { it == char } > 1)) {
+                    if (!validate(char, bitset)) {
                         return false
                     }
                 }
+                bitset.fill(false)
             }
 
             // for each column
             for (i in board.indices) {
-                val set = mutableSetOf<Int>()
                 for (j in board[i].indices) {
                     val char = board[j][i]
-                    if (!isValidSudokuCell(char)
-                        || (!char.isEmptyCell() && set.contains(char.digitToInt()))) {
+                    if (!validate(char, bitset)) {
                         return false
                     }
-                    if (!char.isEmptyCell()) {
-                        set.add(char.digitToInt())
-                    }
                 }
+                bitset.fill(false)
             }
 
+            return true
+        }
+
+        private fun validate(char: Char, bitset: BooleanArray): Boolean {
+            if (!isValidSudokuCell(char)) {
+                return false
+            }
+            if (!char.isEmptyCell()) {
+                if (bitset[char.digitToInt()]) {
+                    return false
+                }
+                bitset[char.digitToInt()] = true
+            }
             return true
         }
 
