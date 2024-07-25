@@ -13,7 +13,7 @@ fun main() {
             charArrayOf('.','.','.','4','1','9','.','.','5'),
             charArrayOf('.','.','.','.','8','.','.','7','9')
         )
-    ))
+    )) // true 
 
     println(LC0036_ValidSudoku.isValidSudoku(
         arrayOf(
@@ -27,7 +27,7 @@ fun main() {
             charArrayOf('.','.','.','4','1','9','.','.','5'),
             charArrayOf('.','.','.','.','8','.','.','7','9')
         )
-    ))
+    )) // false
 }
 
 class LC0036_ValidSudoku {
@@ -44,7 +44,7 @@ class LC0036_ValidSudoku {
             // for each row
             for (row in board) {
                 for (char in row) {
-                    if (!validate(char, bitset)) {
+                    if (!validateAndSet(char, bitset)) {
                         return false
                     }
                 }
@@ -55,7 +55,7 @@ class LC0036_ValidSudoku {
             for (i in board.indices) {
                 for (j in board[i].indices) {
                     val char = board[j][i]
-                    if (!validate(char, bitset)) {
+                    if (!validateAndSet(char, bitset)) {
                         return false
                     }
                 }
@@ -65,7 +65,7 @@ class LC0036_ValidSudoku {
             return true
         }
 
-        private fun validate(char: Char, bitset: BooleanArray): Boolean {
+        private fun validateAndSet(char: Char, bitset: BooleanArray): Boolean {
             if (!isValidSudokuCell(char)) {
                 return false
             }
