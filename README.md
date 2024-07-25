@@ -1,4 +1,4 @@
-### Solved (37)
+### Solved (38)
 
 [1](https://leetcode.com/problems/two-sum/)
 
@@ -65,6 +65,8 @@
 [572](https://leetcode.com/problems/subtree-of-another-tree/)
 
 [815](https://leetcode.com/problems/bus-routes/description/)
+
+[1877](https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/description/)
 
 [1909](https://leetcode.com/problems/remove-one-element-to-make-the-array-strictly-increasing/)
 

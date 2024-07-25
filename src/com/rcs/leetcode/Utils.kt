@@ -294,6 +294,18 @@ class BalancedBinarySearchTree<K, V> where K: Comparable<K> {
         return ReOrderBstIterator(root)
     }
 
+    fun getMin(): BstEntry<K, V>? {
+        return leftMost(root)?.let {
+            BstEntry(it.key, it.value)
+        }
+    }
+
+    fun getMax(): BstEntry<K, V>? {
+        return rightMost(root)?.let {
+            BstEntry(it.key, it.value)
+        }
+    }
+
     /**
      * Returns the previous value, if any, associated with this key
      */
