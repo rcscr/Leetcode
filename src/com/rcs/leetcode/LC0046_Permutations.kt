@@ -40,8 +40,7 @@ class LC0046_Permutations {
 
         private fun combine(number: Int, permutations: List<List<Int>>): List<List<Int>> {
             return permutations.flatMap { list ->
-                val lists = mutableListOf<List<Int>>()
-                for (i in 0..list.size) {
+                (0..list.size).map { i ->
                     val newList = mutableListOf<Int>()
                     for (j in 0..<i) {
                         newList.add(list[j])
@@ -50,9 +49,8 @@ class LC0046_Permutations {
                     for (k in i..<list.size) {
                         newList.add(list[k])
                     }
-                    lists.add(newList)
+                    newList
                 }
-                lists
             }
         }
     }
