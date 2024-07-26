@@ -1,4 +1,4 @@
-### Solved (39)
+### Solved (40)
 
 [1](https://leetcode.com/problems/two-sum/)
 
@@ -15,6 +15,8 @@
 [36](https://leetcode.com/problems/valid-sudoku/)
 
 [42](https://leetcode.com/problems/trapping-rain-water/)
+
+[46](https://leetcode.com/problems/permutations/)
 
 [48](https://leetcode.com/problems/rotate-image/description/)
 
