@@ -29,19 +29,17 @@ class LC1877_MinimizedPairSum {
             val bst = BalancedBinarySearchTree<Int, Int>()
             nums.forEach { bst.add(it, 1 + (bst.get(it) ?: 0)) }
 
-            val pairs = Array<Pair<Int, Int>?>(nums.size / 2) { null }
-
-            for (i in pairs.indices) {
+            val pairs = Array<Pair<Int, Int>?>(nums.size / 2) {
                 val min = bst.getMin()!!
                 val max = bst.getMax()!!
-
-                pairs[i] = Pair(min.key, max.key)
 
                 if (min.value == 1) bst.remove(min.key)
                 else bst.add(min.key, min.value - 1)
 
                 if (max.value == 1) bst.remove(max.key)
                 else bst.add(max.key, max.value - 1)
+
+                Pair(min.key, max.key)
             }
 
             return pairs.maxOf { it!!.first + it.second }
