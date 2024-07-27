@@ -25,14 +25,7 @@ class LC0022_GenerateParantheses {
          */
 
         fun generateParenthesis(n: Int): List<String> {
-            val innerSize = n * 2 - 2
-            val inner = Array(innerSize) {
-                when {
-                    it < innerSize / 2 -> '('
-                    else -> ')'
-                }
-            }
-            return permute(inner)
+            return permute(("(".repeat(n - 1) + ")".repeat(n - 1)).toCharArray().toTypedArray())
                 .distinct()
                 .map { "(${it.joinToString("")})" }
                 .filter { isValid(it) }
