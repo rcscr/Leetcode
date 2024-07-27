@@ -1,9 +1,9 @@
 package com.rcs.leetcode
 
 fun main() {
-    println(LC0046_Permutations.permute(intArrayOf(1, 2, 3)))
-    println(LC0046_Permutations.permute(intArrayOf(0, 1)))
-    println(LC0046_Permutations.permute(intArrayOf(1)))
+    println(LC0046_Permutations.permute(arrayOf(1, 2, 3)))
+    println(LC0046_Permutations.permute(arrayOf(0, 1)))
+    println(LC0046_Permutations.permute(arrayOf(1)))
 }
 
 class LC0046_Permutations {
@@ -26,11 +26,12 @@ class LC0046_Permutations {
          * Output: [[1]]
          */
 
-        fun permute(nums: IntArray): List<List<Int>> {
+
+        fun <T> permute(nums: Array<T>): List<List<T>> {
             return permute(nums, 0, nums.size - 1)
         }
 
-        private fun permute(nums: IntArray, start: Int, end: Int): List<List<Int>> {
+        private fun <T> permute(nums: Array<T>, start: Int, end: Int): List<List<T>> {
             return when (end - start) {
                 0 -> listOf(listOf(nums[start]))
                 1 -> listOf(listOf(nums[start], nums[end]), listOf(nums[end], nums[start]))
@@ -38,10 +39,10 @@ class LC0046_Permutations {
             }
         }
 
-        private fun combine(number: Int, permutations: List<List<Int>>): List<List<Int>> {
+        private fun <T> combine(number: T, permutations: List<List<T>>): List<List<T>> {
             return permutations.flatMap { list ->
                 (0..list.size).map { i ->
-                    val newList = mutableListOf<Int>()
+                    val newList = mutableListOf<T>()
                     for (j in 0..<i) {
                         newList.add(list[j])
                     }
