@@ -1,4 +1,4 @@
-### Solved (40)
+### Solved (41)
 
 [1](https://leetcode.com/problems/two-sum/)
 
@@ -9,6 +9,8 @@
 [20](https://leetcode.com/problems/valid-parentheses/description/)
 
 [21](https://leetcode.com/problems/merge-two-sorted-lists/description/)
+
+[22](https://leetcode.com/problems/generate-parentheses/description/)
 
 [23](https://leetcode.com/problems/merge-k-sorted-lists/)
 

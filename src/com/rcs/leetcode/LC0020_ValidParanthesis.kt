@@ -33,7 +33,7 @@ class LC0020_ValidParanthesis {
 
             for (char in s.toCharArray()) {
                 if (closeToOpenParenthesis.containsKey(char)) {
-                    if (stack.removeLast() != closeToOpenParenthesis[char]) {
+                    if (stack.isEmpty() || stack.removeLast() != closeToOpenParenthesis[char]) {
                         return false
                     }
                 } else {
