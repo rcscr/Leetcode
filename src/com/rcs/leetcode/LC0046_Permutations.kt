@@ -26,13 +26,13 @@ class LC0046_Permutations {
          * Output: [[1]]
          */
 
-
         fun <T> permute(nums: Array<T>): List<List<T>> {
             return permute(nums, 0, nums.size - 1)
         }
 
         private fun <T> permute(nums: Array<T>, start: Int, end: Int): List<List<T>> {
             return when (end - start) {
+                -1 -> listOf()
                 0 -> listOf(listOf(nums[start]))
                 1 -> listOf(listOf(nums[start], nums[end]), listOf(nums[end], nums[start]))
                 else -> combine(nums[start], permute(nums, start + 1, end))
