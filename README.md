@@ -16,6 +16,8 @@
 
 [36](https://leetcode.com/problems/valid-sudoku/)
 
+[39](https://leetcode.com/problems/combination-sum/)
+
 [42](https://leetcode.com/problems/trapping-rain-water/)
 
 [46](https://leetcode.com/problems/permutations/)
