@@ -39,11 +39,9 @@ class LC0039_CombinationSum {
                     val sum = candidates[i] + candidates[j]
 
                     if (sum > target) {
-                        break
+                        break // assume list 'candidates' is sorted
                     } else {
-                        val combination = mutableListOf<Int>()
-                        combination.add(candidates[i])
-                        combination.add(candidates[j])
+                        val combination = mutableListOf(candidates[i], candidates[j])
 
                         if (sum == target) {
                             results.add(combination.sorted())

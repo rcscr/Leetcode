@@ -1,4 +1,4 @@
-### Solved (41)
+### Solved (42)
 
 [1](https://leetcode.com/problems/two-sum/)
 
